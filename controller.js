@@ -18,7 +18,7 @@ function data(res, req) {
 
   	for(i=1;i<=10;i++){
   		var id = ((queryAsObject.page-1) * 10) + i
-  		temp.push({"id":id , "item":("List Item - " + id)});
+  		temp.push({"id":id , "item":("List Item - " + id), "icon":((queryAsObject.page%2==0) ? "cross-green.png":"cross-on.png") });
   	}
 
   	result = JSON.stringify({"status":"success", "data":temp, "message":""})
