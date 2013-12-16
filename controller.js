@@ -14,14 +14,18 @@ function data(res, req) {
   	// , isAjax = req.xhr;
 
   if(queryAsObject.page && queryAsObject.page != "" && queryAsObject.page != "0"){
-  	var temp = [];
+  	var temp = []
+      , ulClass = "red-icon";
 
   	for(i=1;i<=10;i++){
   		var id = ((queryAsObject.page-1) * 10) + i
-  		temp.push({"id":id , "item":("List Item - " + id), "icon":((queryAsObject.page%2==0) ? "cross-green.png":"cross-on.png") });
+  		temp.push({"id":id , "item":("List Item - " + id)}); //, "icon":((queryAsObject.page%2==0) ? "cross-green.png":"cross-on.png") });
   	}
 
-  	result = JSON.stringify({"status":"success", "data":temp, "message":""})
+    if(queryAsObject.page%2 == 0)
+      ulClass = "green-icon";
+
+  	result = JSON.stringify({"status":"success", "data":temp, "listClass": ulClass, "message":""})
   	
   }
   else{
